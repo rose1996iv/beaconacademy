@@ -1,62 +1,56 @@
-# Astro Starter Kit: Blog
+# Joseph | Portfolio & Academy
 
-```sh
-npm create astro@latest -- --template blog
-```
+![Astro](https://img.shields.io/badge/Built_with-Astro-ff5a03?style=flat&logo=astro&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Styled_with-Tailwind_CSS-38b2ac?style=flat&logo=tailwind-css&logoColor=white)
+![TypeScript](https://img.shields.io/badge/Language-TypeScript-007acc?style=flat&logo=typescript&logoColor=white)
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Welcome to the source code for my personal portfolio and educational platform. I am an MTech student in Computer Science & Engineering, specializing in **Cybersecurity**, **AI**, and **Data Science**, as well as a passionate Computer Science Teacher striving to make education modern, fast, and accessible.
 
-Features:
+## 🚀 About This Project
 
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and OpenGraph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
+This project leverages the power of [Astro](https://astro.build/) for blazingly fast page loads and exceptional developer experience. It serves dual purposes:
+1. **Personal Portfolio**: Showcasing my background, teaching experience, and technical projects.
+2. **Educational Platform**: Structured to host lessons, categories, and educational content seamlessly.
 
-## 🚀 Project Structure
+## ✨ Features
 
-Inside of your Astro project, you'll see the following folders and files:
+- **Blazing Fast Performance**: Built using Astro's island architecture.
+- **Modern Styling**: Styled beautifully with Tailwind CSS.
+- **Content Collections**: Type-safe Markdown/MDX authoring for smooth lesson creation.
+- **Responsive Design**: Works perfectly across mobile, tablet, and desktop devices.
+- **SEO Optimized**: Pre-configured global metadata and fast static generation.
 
-```text
-├── public/
-├── src/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   └── pages/
-├── astro.config.mjs
-├── README.md
-├── package.json
-└── tsconfig.json
-```
+## 💻 Tech Stack
+- **Framework**: Astro 
+- **Styling**: Tailwind CSS
+- **Interactivity**: React
+- **Content Publishing**: Markdown & MDX
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 🛠️ Local Development
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Want to run this project locally? Follow these steps:
 
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/rose1996iv/beaconacademy.git
+   cd beaconacademy
+   ```
 
-Any static assets, like images, can be placed in the `public/` directory.
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-## 🧞 Commands
+3. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
 
-All commands are run from the root of the project, from a terminal:
+4. Open your browser and visit `http://localhost:4321` to view the site.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## 📬 Contact Me
+- **LinkedIn:** [Joseph](https://www.linkedin.com/in/joseph-61734a17a)
+- **GitHub:** [@Joseph1997-eng](https://github.com/Joseph1997-eng)
 
-## 👀 Want to learn more?
-
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
-
-## Credit
-
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+---
+*Built with ❤️ utilizing Astro and Tailwind.*
