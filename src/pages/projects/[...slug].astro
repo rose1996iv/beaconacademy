@@ -1,0 +1,32 @@
+---
+import { type CollectionEntry, getCollection, render } from 'astro:content';
+import BlogPost from '../../layouts/BlogPost.astro';
+
+export async function getStaticPaths() {
+	const posts = await getCollection('projects');
+	return posts.map((post) => ({
+		params: { slug: post.id },
+		props: post,
+	}));
+}
+type Props = CollectionEntry<'projects'>;
+
+const post = Astro.props;
+const { Content } = await render(post);
+---
+
+<BlogPost {...post.data}>
+    <div class="not-prose mb-8 flex gap-4">
+        {post.data.demoLink && (
+            <a href={post.data.demoLink} target="_blank" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-xl transition-colors">
+                Live Demo
+            </a>
+        )}
+        {post.data.sourceLink && (
+            <a href={post.data.sourceLink} target="_blank" class="inline-block bg-slate-800 hover:bg-slate-900 text-white font-bold py-3 px-6 rounded-xl transition-colors">
+                Source Code
+            </a>
+        )}
+    </div>
+	<Content />
+</BlogPost>

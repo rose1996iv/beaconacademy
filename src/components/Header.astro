@@ -1,5 +1,6 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
+import { Image } from "astro:assets";
 ---
 
 <header
@@ -7,43 +8,42 @@ import HeaderLink from "./HeaderLink.astro";
 >
   <nav class="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
     <a
-      href="/"
+      href="/beaconacademy/"
       class="text-xl font-bold tracking-tight text-slate-900 hover:text-indigo-600 transition-colors flex items-center gap-2 group"
     >
-      <span
-        class="bg-indigo-600 text-white rounded p-1 group-hover:-rotate-6 transition-transform"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          ><path d="M12 2v20"></path><path
-            d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg
-        >
-      </span>
-      Joseph
+      <Image src="/beaconacademy/logo.png" alt="Beacon Academy Logo" width={32} height={32} class="rounded group-hover:rotate-6 transition-transform" />
+      Beacon Academy
     </a>
-    <div class="flex gap-6 items-center">
+    <div class="flex gap-4 md:gap-6 items-center overflow-x-auto pb-1 md:pb-0 hide-scrollbar">
       <HeaderLink
-        href="/lessons"
-        class="text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-indigo-600 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:origin-right hover:after:origin-left"
-        >Lessons</HeaderLink
+        href="/beaconacademy/techtips"
+        class="text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-indigo-600 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:origin-right hover:after:origin-left whitespace-nowrap"
+        >Tech Tips</HeaderLink
       >
       <HeaderLink
-        href="/categories"
-        class="text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-indigo-600 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:origin-right hover:after:origin-left"
-        >Categories</HeaderLink
+        href="/beaconacademy/info"
+        class="text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-indigo-600 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:origin-right hover:after:origin-left whitespace-nowrap"
+        >Info</HeaderLink
       >
       <HeaderLink
-        href="/about"
-        class="text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-indigo-600 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:origin-right hover:after:origin-left"
-        >About</HeaderLink
+        href="/beaconacademy/blog"
+        class="text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-indigo-600 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:origin-right hover:after:origin-left whitespace-nowrap"
+        >Blog</HeaderLink
+      >
+      <HeaderLink
+        href="/beaconacademy/ebooks"
+        class="text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-indigo-600 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:origin-right hover:after:origin-left whitespace-nowrap"
+        >eBooks</HeaderLink
+      >
+      <HeaderLink
+        href="/beaconacademy/templates"
+        class="text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-indigo-600 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:origin-right hover:after:origin-left whitespace-nowrap"
+        >Templates</HeaderLink
+      >
+      <HeaderLink
+        href="/beaconacademy/projects"
+        class="text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-indigo-600 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:origin-right hover:after:origin-left whitespace-nowrap"
+        >Projects</HeaderLink
       >
     </div>
   </nav>
