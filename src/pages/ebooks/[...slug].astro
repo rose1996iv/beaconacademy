@@ -16,10 +16,22 @@ const { Content } = await render(post);
 ---
 
 <BlogPost {...post.data}>
-    {post.data.downloadLink && (
-        <a href={post.data.downloadLink} target="_blank" class="not-prose inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-xl mb-8 transition-colors">
-            Download eBook
+    <div class="not-prose mb-8 flex flex-wrap gap-4">
+        {post.data.downloadLink && (
+            <a 
+                href={post.data.downloadLink} 
+                target="_blank" 
+                class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 !text-white font-bold py-3 px-8 rounded-xl transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
+            >
+                <span>📥</span> Get the eBook
+            </a>
+        )}
+        <a 
+            href="#footer-newsletter" 
+            class="inline-flex items-center gap-2 bg-white border-2 border-slate-200 hover:border-indigo-600 text-slate-700 hover:text-indigo-600 font-bold py-3 px-8 rounded-xl transition-all shadow-sm"
+        >
+            <span>📖</span> Read Full Overview
         </a>
-    )}
+    </div>
 	<Content />
 </BlogPost>
