@@ -1,0 +1,301 @@
+---
+// Brevo (formerly Sendinblue) Newsletter Signup Component
+// Free tier: 300 emails/day, Unlimited contacts
+// To setup: https://www.brevo.com → Sign up → Create a form → Copy the form action URL
+
+interface Props {
+  title?: string;
+  description?: string;
+  compact?: boolean; // for footer usage
+}
+
+const {
+  title = "Newsletter ကို Subscribe လုပ်ပါ",
+  description = "နောက်ဆုံးထွက် Tech Tips, Lessons, နဲ့ Resources တွေကို Email ဖြင့် လက်ခံရယူပါ",
+  compact = false
+} = Astro.props;
+---
+
+{compact ? (
+  <!-- Compact version for footer -->
+  <div class="newsletter-compact">
+    <p class="newsletter-compact-title">📧 Newsletter</p>
+    <form
+      id="newsletter-form-compact"
+      class="newsletter-form-compact"
+      novalidate
+    >
+      <input
+        type="email"
+        id="newsletter-email-compact"
+        name="email"
+        placeholder="your@email.com"
+        required
+        class="newsletter-input-compact"
+      />
+      <button type="submit" class="newsletter-btn-compact">Subscribe</button>
+    </form>
+    <p id="newsletter-msg-compact" class="newsletter-msg" aria-live="polite"></p>
+  </div>
+) : (
+  <!-- Full version for dedicated section -->
+  <section class="newsletter-section" id="newsletter">
+    <div class="newsletter-inner">
+      <div class="newsletter-icon">📧</div>
+      <h2 class="newsletter-title">{title}</h2>
+      <p class="newsletter-desc">{description}</p>
+
+      <form
+        id="newsletter-form"
+        class="newsletter-form"
+        novalidate
+      >
+        <div class="newsletter-fields">
+          <input
+            type="text"
+            id="newsletter-name"
+            name="name"
+            placeholder="သင့်နာမည်"
+            class="newsletter-input"
+          />
+          <input
+            type="email"
+            id="newsletter-email"
+            name="email"
+            placeholder="သင့် Email လိပ်စာ"
+            required
+            class="newsletter-input"
+          />
+        </div>
+        <button type="submit" id="newsletter-submit" class="newsletter-submit-btn">
+          <span class="btn-text">✉️ Subscribe လုပ်မယ်</span>
+          <span class="btn-loading" hidden>Sending...</span>
+        </button>
+      </form>
+
+      <p id="newsletter-msg" class="newsletter-msg" aria-live="polite"></p>
+      <p class="newsletter-privacy">🔒 Spam မပို့ပါ။ Unsubscribe ကို အချိန်မရွေး လုပ်နိုင်သည်။</p>
+    </div>
+  </section>
+)}
+
+<style>
+  /* ── Full Newsletter Section ── */
+  .newsletter-section {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%);
+    border-radius: 1.5rem;
+    padding: 3rem 2rem;
+    text-align: center;
+    margin: 3rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .newsletter-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .newsletter-inner {
+    position: relative;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+  .newsletter-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    animation: float 3s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  .newsletter-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.75rem;
+  }
+  .newsletter-desc {
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+  .newsletter-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .newsletter-fields {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+  .newsletter-input {
+    flex: 1;
+    min-width: 180px;
+    padding: 0.75rem 1rem;
+    border-radius: 0.75rem;
+    border: 2px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.15);
+    color: white;
+    font-size: 0.95rem;
+    outline: none;
+    transition: all 0.2s;
+    backdrop-filter: blur(8px);
+  }
+  .newsletter-input::placeholder { color: rgba(255,255,255,0.6); }
+  .newsletter-input:focus {
+    border-color: rgba(255,255,255,0.8);
+    background: rgba(255,255,255,0.2);
+  }
+  .newsletter-submit-btn {
+    padding: 0.85rem 2rem;
+    background: white;
+    color: #6366f1;
+    font-weight: 700;
+    font-size: 1rem;
+    border: none;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  }
+  .newsletter-submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+  }
+  .newsletter-submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+  }
+  .newsletter-msg {
+    margin-top: 0.75rem;
+    font-weight: 500;
+    min-height: 1.4em;
+    color: white;
+  }
+  .newsletter-privacy {
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.65);
+  }
+
+  /* ── Compact Version (Footer) ── */
+  .newsletter-compact { display: flex; flex-direction: column; gap: 0.5rem; }
+  .newsletter-compact-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 0.25rem;
+  }
+  .newsletter-form-compact {
+    display: flex;
+    gap: 0.5rem;
+  }
+  .newsletter-input-compact {
+    flex: 1;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .newsletter-input-compact:focus { border-color: #6366f1; }
+  .newsletter-btn-compact {
+    padding: 0.5rem 1rem;
+    background: #6366f1;
+    color: white;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.2s;
+  }
+  .newsletter-btn-compact:hover { background: #4f46e5; }
+
+  @media (max-width: 480px) {
+    .newsletter-section { padding: 2rem 1.25rem; }
+    .newsletter-title { font-size: 1.4rem; }
+    .newsletter-fields { flex-direction: column; }
+  }
+</style>
+
+<script>
+  // ─── IMPORTANT SETUP ───────────────────────────────────────────────────
+  // 1. Sign up at https://www.brevo.com (Free)
+  // 2. Go to Contacts → Forms → Create a form
+  // 3. After creating the form, find your List ID under Contacts → Lists
+  // 4. Get your API key from Settings → API Keys
+  // 5. DO NOT put API key in frontend! Use a Cloudflare Worker or Formspree.
+  //
+  // EASIEST FREE OPTION: Use Formspree.io
+  // → Sign up at https://formspree.io (free: 50 submissions/month)
+  // → Create a new form → Copy your form endpoint
+  // → Replace FORMSPREE_ENDPOINT below with your endpoint
+  // ─────────────────────────────────────────────────────────────────────
+
+  const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID"; // ← Replace this!
+
+  function setupNewsletterForm(formId: string, emailId: string, msgId: string, nameId?: string) {
+    const form = document.getElementById(formId) as HTMLFormElement | null;
+    const emailInput = document.getElementById(emailId) as HTMLInputElement | null;
+    const msgEl = document.getElementById(msgId);
+    const nameInput = nameId ? document.getElementById(nameId) as HTMLInputElement | null : null;
+    const submitBtn = form?.querySelector('[type="submit"]') as HTMLButtonElement | null;
+
+    if (!form || !emailInput || !msgEl) return;
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = emailInput.value.trim();
+      if (!email || !email.includes("@")) {
+        msgEl.textContent = "❌ Valid email ထည့်ပေးပါ";
+        msgEl.style.color = "#fca5a5";
+        return;
+      }
+
+      // Show loading state
+      if (submitBtn) submitBtn.disabled = true;
+      const btnText = submitBtn?.querySelector(".btn-text");
+      const btnLoading = submitBtn?.querySelector(".btn-loading");
+      if (btnText) (btnText as HTMLElement).hidden = true;
+      if (btnLoading) (btnLoading as HTMLElement).hidden = false;
+      msgEl.textContent = "";
+
+      try {
+        const payload: Record<string, string> = { email };
+        if (nameInput?.value) payload["name"] = nameInput.value.trim();
+
+        const res = await fetch(FORMSPREE_ENDPOINT, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Accept": "application/json" },
+          body: JSON.stringify(payload),
+        });
+
+        if (res.ok) {
+          msgEl.textContent = "✅ Subscribe လုပ်ပြီးပါပြီ! မကြာမီ Email ရမည်ဖြစ်သည်";
+          msgEl.style.color = "#86efac";
+          form.reset();
+        } else {
+          throw new Error("Server error");
+        }
+      } catch {
+        msgEl.textContent = "❌ Error ဖြစ်သွားသည်။ နောက်မှ ထပ်ကြိုးစားပါ";
+        msgEl.style.color = "#fca5a5";
+      } finally {
+        if (submitBtn) submitBtn.disabled = false;
+        if (btnText) (btnText as HTMLElement).hidden = false;
+        if (btnLoading) (btnLoading as HTMLElement).hidden = true;
+      }
+    });
+  }
+
+  // Initialize forms
+  setupNewsletterForm("newsletter-form", "newsletter-email", "newsletter-msg", "newsletter-name");
+  setupNewsletterForm("newsletter-form-compact", "newsletter-email-compact", "newsletter-msg-compact");
+</script>

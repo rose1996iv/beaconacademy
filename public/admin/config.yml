@@ -1,0 +1,130 @@
+backend:
+  name: github
+  repo: rose1996iv/beaconacademy
+  branch: main
+  base_url: https://beacon-cms-auth.robinsonjoseph-va.workers.dev
+
+# Where media files (images) will be stored
+media_folder: "src/assets/uploads"
+public_folder: "/beaconacademy/assets/uploads"
+
+# Site URL for preview links
+site_url: https://rose1996iv.github.io/beaconacademy
+
+collections:
+  # ─── BLOG ───────────────────────────────────────────────────
+  - name: "blog"
+    label: "📝 Blog"
+    folder: "src/content/blog"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    extension: "md"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Publish Date", name: "pubDate", widget: "datetime", format: "YYYY-MM-DD" }
+      - { label: "Updated Date", name: "updatedDate", widget: "datetime", format: "YYYY-MM-DD", required: false }
+      - { label: "Hero Image", name: "heroImage", widget: "image", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  # ─── TECH TIPS ──────────────────────────────────────────────
+  - name: "techtips"
+    label: "💡 Tech Tips"
+    folder: "src/content/techtips"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    extension: "md"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Publish Date", name: "pubDate", widget: "datetime", format: "YYYY-MM-DD" }
+      - { label: "Updated Date", name: "updatedDate", widget: "datetime", format: "YYYY-MM-DD", required: false }
+      - { label: "Hero Image", name: "heroImage", widget: "image", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  # ─── INFO SHARING ───────────────────────────────────────────
+  - name: "infosharing"
+    label: "ℹ️ Info Sharing"
+    folder: "src/content/infosharing"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    extension: "md"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Publish Date", name: "pubDate", widget: "datetime", format: "YYYY-MM-DD" }
+      - { label: "Updated Date", name: "updatedDate", widget: "datetime", format: "YYYY-MM-DD", required: false }
+      - { label: "Hero Image", name: "heroImage", widget: "image", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  # ─── PROJECTS ───────────────────────────────────────────────
+  - name: "projects"
+    label: "🚀 Projects"
+    folder: "src/content/projects"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    extension: "md"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Publish Date", name: "pubDate", widget: "datetime", format: "YYYY-MM-DD" }
+      - { label: "Updated Date", name: "updatedDate", widget: "datetime", format: "YYYY-MM-DD", required: false }
+      - { label: "Hero Image", name: "heroImage", widget: "image", required: false }
+      - { label: "Demo Link", name: "demoLink", widget: "string", required: false }
+      - { label: "Source Code Link", name: "sourceLink", widget: "string", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  # ─── EBOOKS ─────────────────────────────────────────────────
+  - name: "ebooks"
+    label: "📚 eBooks"
+    folder: "src/content/ebooks"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    extension: "md"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Publish Date", name: "pubDate", widget: "datetime", format: "YYYY-MM-DD" }
+      - { label: "Cover Image", name: "heroImage", widget: "image", required: false }
+      - { label: "Download Link", name: "downloadLink", widget: "string", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  # ─── TEMPLATES ──────────────────────────────────────────────
+  - name: "templates"
+    label: "🎨 Templates"
+    folder: "src/content/templates"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    extension: "md"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Publish Date", name: "pubDate", widget: "datetime", format: "YYYY-MM-DD" }
+      - { label: "Preview Image", name: "heroImage", widget: "image", required: false }
+      - { label: "Download Link", name: "downloadLink", widget: "string", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  # ─── LESSONS ────────────────────────────────────────────────
+  - name: "lessons"
+    label: "🎓 Lessons"
+    folder: "src/content/lessons"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    extension: "md"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Publish Date", name: "pubDate", widget: "datetime", format: "YYYY-MM-DD" }
+      - { label: "Category", name: "category", widget: "string" }
+      - label: "Difficulty"
+        name: "difficulty"
+        widget: "select"
+        options: ["Beginner", "Intermediate", "Advanced"]
+      - { label: "Body", name: "body", widget: "markdown" }

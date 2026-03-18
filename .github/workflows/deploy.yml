@@ -9,7 +9,7 @@ on:
 
 # Allow this job to clone the repo and create a page deployment
 permissions:
-  contents: read
+  contents: write   # Decap CMS needs write access to commit new posts
   pages: write
   id-token: write
 
