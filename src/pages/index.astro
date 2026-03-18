@@ -4,6 +4,7 @@ import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 import { getCollection } from 'astro:content';
+import Newsletter from "../components/Newsletter.astro";
 
 const techtips = (await getCollection('techtips')).sort((a: any, b: any) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()).slice(0, 3);
 const info = (await getCollection('infosharing')).sort((a: any, b: any) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()).slice(0, 3);
@@ -138,6 +139,7 @@ const blog = (await getCollection('blog')).sort((a: any, b: any) => b.data.pubDa
 
 			</div>
 		</main>
+		<Newsletter id="footer-newsletter" />
 		<Footer/>
 	</body>
 </html>
