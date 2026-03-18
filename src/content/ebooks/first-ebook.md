@@ -1,8 +1,8 @@
 ---
 title: "eBook: Learn Python in Myanmar"
-description: "A comprehensive guide to learning Python programming in Myanmar language."
-pubDate: "2024-03-01"
-downloadLink: "https://example.com/download"
+description: A comprehensive guide to learning Python programming in Myanmar language.
+pubDate: 2026-03-19
+downloadLink: https://example.com/download
 ---
 # Free eBooks for Students
 
