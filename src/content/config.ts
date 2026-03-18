@@ -2,45 +2,45 @@ import { defineCollection, z } from 'astro:content';
 
 const blog = defineCollection({
     type: 'content',
-    schema: z.object({
+    schema: ({ image }) => z.object({
         title: z.string(),
         description: z.string(),
         pubDate: z.coerce.date(),
         updatedDate: z.coerce.date().optional(),
-        heroImage: z.string().optional(),
+        heroImage: image().optional(),
     }),
 });
 
 const techtips = defineCollection({
     type: 'content',
-    schema: z.object({
+    schema: ({ image }) => z.object({
         title: z.string(),
         description: z.string(),
         pubDate: z.coerce.date(),
         updatedDate: z.coerce.date().optional(),
-        heroImage: z.string().optional(),
+        heroImage: image().optional(),
     }),
 });
 
 const infosharing = defineCollection({
     type: 'content',
-    schema: z.object({
+    schema: ({ image }) => z.object({
         title: z.string(),
         description: z.string(),
         pubDate: z.coerce.date(),
         updatedDate: z.coerce.date().optional(),
-        heroImage: z.string().optional(),
+        heroImage: image().optional(),
     }),
 });
 
 const projects = defineCollection({
     type: 'content',
-    schema: z.object({
+    schema: ({ image }) => z.object({
         title: z.string(),
         description: z.string(),
         pubDate: z.coerce.date(),
         updatedDate: z.coerce.date().optional(),
-        heroImage: z.string().optional(),
+        heroImage: image().optional(),
         demoLink: z.string().url().optional(),
         sourceLink: z.string().url().optional(),
     }),
@@ -48,24 +48,24 @@ const projects = defineCollection({
 
 const ebooks = defineCollection({
     type: 'content',
-    schema: z.object({
+    schema: ({ image }) => z.object({
         title: z.string(),
         description: z.string(),
         pubDate: z.coerce.date(),
         updatedDate: z.coerce.date().optional(),
-        heroImage: z.string().optional(),
+        heroImage: image().optional(),
         downloadLink: z.string().url().optional(),
     }),
 });
 
 const templates = defineCollection({
     type: 'content',
-    schema: z.object({
+    schema: ({ image }) => z.object({
         title: z.string(),
         description: z.string(),
         pubDate: z.coerce.date(),
         updatedDate: z.coerce.date().optional(),
-        heroImage: z.string().optional(),
+        heroImage: image().optional(),
         downloadLink: z.string().url().optional(),
     }),
 });
