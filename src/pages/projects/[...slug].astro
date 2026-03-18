@@ -16,15 +16,23 @@ const { Content } = await render(post);
 ---
 
 <BlogPost {...post.data}>
-    <div class="not-prose mb-8 flex gap-4">
+    <div class="not-prose mb-8 flex flex-wrap gap-4">
         {post.data.demoLink && (
-            <a href={post.data.demoLink} target="_blank" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-xl transition-colors">
-                Live Demo
+            <a 
+                href={post.data.demoLink} 
+                target="_blank" 
+                class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 !text-white font-bold py-3 px-6 rounded-xl transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0"
+            >
+                <span>🌐</span> Live Demo
             </a>
         )}
         {post.data.sourceLink && (
-            <a href={post.data.sourceLink} target="_blank" class="inline-block bg-slate-800 hover:bg-slate-900 text-white font-bold py-3 px-6 rounded-xl transition-colors">
-                Source Code
+            <a 
+                href={post.data.sourceLink} 
+                target="_blank" 
+                class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-900 !text-white font-bold py-3 px-6 rounded-xl transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0"
+            >
+                <span>💻</span> Source Code
             </a>
         )}
     </div>
