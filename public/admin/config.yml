@@ -6,7 +6,8 @@ backend:
 
 # Where media files (images) will be stored
 media_folder: "src/assets/uploads"
-public_folder: "/beaconacademy/assets/uploads"
+public_folder: "../../assets/uploads" # For Astro Content Collections relative paths
+media_folder_relative: true
 
 # Site URL for preview links
 site_url: https://rose1996iv.github.io/beaconacademy
