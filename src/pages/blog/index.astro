@@ -55,8 +55,11 @@ const posts = (await getCollection('blog')).sort(
 			}
 			.title {
 				margin: 0;
-				color: rgb(var(--black));
+				color: rgb(var(--black, 15 23 42));
 				line-height: 1;
+			}
+			:global(.dark) .title {
+				color: rgb(248 250 252); /* slate-50 */
 			}
 			.date {
 				margin: 0;

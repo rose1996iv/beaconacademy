@@ -10,37 +10,37 @@ lessons.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 <Layout title="Lessons | Academy">
   <main class="max-w-5xl mx-auto px-4 py-12">
     <header class="mb-12">
-      <h1 class="text-5xl font-extrabold text-slate-900 tracking-tight mb-4">Lessons</h1>
-      <p class="text-xl text-slate-600 max-w-2xl">Browse our collection of educational modules to enhance your web development skills.</p>
+      <h1 class="text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4">Lessons</h1>
+      <p class="text-xl text-slate-600 dark:text-slate-400 max-w-2xl">Browse our collection of educational modules to enhance your web development skills.</p>
     </header>
 
     <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
       {
         lessons.map((lesson) => (
-          <article class="group relative flex flex-col bg-white rounded-2xl shadow-sm border border-slate-200 hover:shadow-md hover:border-indigo-300 transition-all overflow-hidden">
+          <article class="group relative flex flex-col bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700/50 hover:shadow-md dark:hover:shadow-indigo-500/20 hover:border-indigo-300 dark:hover:border-indigo-500/50 transition-all overflow-hidden card-hover">
             <a href={`/beaconacademy/lessons/${lesson.slug}/`} class="absolute inset-0 z-10">
               <span class="sr-only">View {lesson.data.title}</span>
             </a>
             
             <div class="p-6 flex-1 flex flex-col">
               <div class="flex gap-2 items-center mb-4">
-                <span class="inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
+                <span class="inline-flex items-center rounded-md bg-indigo-50 dark:bg-indigo-500/10 px-2 py-1 text-xs font-medium text-indigo-700 dark:text-indigo-400 ring-1 ring-inset ring-indigo-700/10 dark:ring-indigo-400/20">
                   {lesson.data.category}
                 </span>
-                <span class="inline-flex items-center rounded-md bg-emerald-50 px-2 py-1 text-xs font-medium text-emerald-700 ring-1 ring-inset ring-emerald-600/20">
+                <span class="inline-flex items-center rounded-md bg-emerald-50 dark:bg-emerald-500/10 px-2 py-1 text-xs font-medium text-emerald-700 dark:text-emerald-400 ring-1 ring-inset ring-emerald-600/20 dark:ring-emerald-400/20">
                   {lesson.data.difficulty}
                 </span>
               </div>
               
-              <h2 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-indigo-600 transition-colors">
+              <h2 class="text-xl font-bold text-slate-900 dark:text-slate-100 mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                 {lesson.data.title}
               </h2>
               
-              <p class="text-slate-600 text-sm mb-6 flex-1 line-clamp-3">
+              <p class="text-slate-600 dark:text-slate-400 text-sm mb-6 flex-1 line-clamp-3">
                 {lesson.data.description}
               </p>
               
-              <div class="flex items-center text-xs text-slate-500 font-medium mt-auto border-t border-slate-100 pt-4">
+              <div class="flex items-center text-xs text-slate-500 dark:text-slate-400 font-medium mt-auto border-t border-slate-100 dark:border-slate-700/50 pt-4">
                 <time datetime={lesson.data.pubDate.toISOString()}>
                   {lesson.data.pubDate.toLocaleDateString(undefined, {
                     year: 'numeric',
