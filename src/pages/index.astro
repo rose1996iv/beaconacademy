@@ -21,10 +21,17 @@ const blog = (await getCollection('blog')).sort((a: any, b: any) => b.data.pubDa
 	</head>
 	<body>
 		<Header />
-		<main class="max-w-6xl mx-auto px-4 py-16 sm:py-24">
-			<div class="text-center mb-16 animate-fade-in-up">
+		<main class="max-w-6xl mx-auto px-4 py-16 sm:py-24 relative">
+			<!-- Animated Particles Background -->
+			<div class="absolute inset-0 overflow-hidden pointer-events-none -z-10">
+				<div class="absolute top-10 left-10 w-32 h-32 bg-indigo-500/10 dark:bg-indigo-500/20 rounded-full blur-3xl animate-float" style="animation-delay: 0s;"></div>
+				<div class="absolute top-40 right-20 w-40 h-40 bg-cyan-500/10 dark:bg-cyan-500/20 rounded-full blur-3xl animate-float" style="animation-delay: 2s;"></div>
+				<div class="absolute bottom-10 left-1/3 w-48 h-48 bg-purple-500/10 dark:bg-purple-500/20 rounded-full blur-3xl animate-float" style="animation-delay: 4s;"></div>
+			</div>
+
+			<div class="text-center mb-16 relative z-10 animate-fade-in-up">
 				<div
-					class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 text-indigo-600 text-sm font-medium mb-6 animate-pulse-slow"
+					class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-sm font-medium mb-6 animate-pulse-slow border border-indigo-100 dark:border-indigo-500/20 shadow-sm"
 				>
 					<span class="relative flex h-2 w-2">
 						<span
@@ -37,15 +44,15 @@ const blog = (await getCollection('blog')).sort((a: any, b: any) => b.data.pubDa
 					MTech Student & Educator
 				</div>
 				<h1
-					class="text-4xl sm:text-6xl font-extrabold tracking-tight text-slate-900 mb-6 w-full text-balance"
+					class="text-4xl sm:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-6 w-full text-balance reveal active"
 				>
 					Welcome to <span
-						class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-cyan-500 hover:from-cyan-500 hover:to-indigo-600 transition-all duration-500 cursor-default"
+						class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-cyan-500 dark:from-indigo-400 dark:to-cyan-400 hover:from-cyan-500 hover:to-indigo-600 dark:hover:from-cyan-400 dark:hover:to-indigo-400 transition-all duration-700 cursor-default inline-block hover:-translate-y-1 hover:scale-105"
 						>Beacon Academy</span
 					>
 				</h1>
 				<p
-					class="text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed"
+					class="text-lg sm:text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed reveal active" style="transition-delay: 200ms;"
 				>
 					A central hub dedicated to helping Myanmar students learn, grow, and innovate. Discover tech tips, free resources, ebooks, and project templates.
 				</p>
@@ -54,87 +61,87 @@ const blog = (await getCollection('blog')).sort((a: any, b: any) => b.data.pubDa
 			<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 text-left animate-fade-in-up" style="animation-delay: 150ms;">
 				
                 <!-- Tech Tips -->
-                <section class="bg-white flex flex-col p-6 rounded-2xl shadow-sm border border-slate-100/50 hover:shadow-md hover:border-indigo-100 transition-all duration-300">
-                    <h2 class="text-xl font-bold flex items-center gap-3 mb-4 border-b border-slate-100 pb-4">
+                <section class="reveal card-hover">
+                    <h2 class="text-xl font-bold flex items-center gap-3 mb-4 border-b border-slate-100 dark:border-slate-700/50 pb-4 text-slate-900 dark:text-white">
                         <span class="bg-indigo-50 text-indigo-600 p-2 rounded-lg text-lg">💡</span> 
                         Tech Tips
                     </h2>
                     <ul class="space-y-3 flex-1">
                         {techtips.map((post: any) => (
-                            <li class="line-clamp-2 leading-snug"><a href={`/beaconacademy/techtips/${post.slug}/`} class="text-slate-700 hover:text-indigo-600 font-medium transition-colors">{post.data.title}</a></li>
+                            <li class="line-clamp-2 leading-snug"><a href={`/beaconacademy/techtips/${post.slug}/`} class="text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 font-medium transition-colors">{post.data.title}</a></li>
                         ))}
                     </ul>
-                    <a href="/beaconacademy/techtips" class="text-sm text-indigo-600 hover:text-indigo-800 font-bold mt-6 inline-flex items-center gap-1 hover:gap-2 transition-all">View All <span>&rarr;</span></a>
+                    <a href="/beaconacademy/techtips" class="text-sm text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 font-bold mt-6 inline-flex items-center gap-1 hover:gap-2 transition-all">View All <span>&rarr;</span></a>
                 </section>
 
                 <!-- Info Sharing -->
-                <section class="bg-white flex flex-col p-6 rounded-2xl shadow-sm border border-slate-100/50 hover:shadow-md hover:border-indigo-100 transition-all duration-300">
-                    <h2 class="text-xl font-bold flex items-center gap-3 mb-4 border-b border-slate-100 pb-4">
+                <section class="reveal card-hover">
+                    <h2 class="text-xl font-bold flex items-center gap-3 mb-4 border-b border-slate-100 dark:border-slate-700/50 pb-4 text-slate-900 dark:text-white">
                         <span class="bg-indigo-50 text-indigo-600 p-2 rounded-lg text-lg">📣</span> 
                         Information
                     </h2>
                     <ul class="space-y-3 flex-1">
                         {info.map((post: any) => (
-                            <li class="line-clamp-2 leading-snug"><a href={`/beaconacademy/info/${post.slug}/`} class="text-slate-700 hover:text-indigo-600 font-medium transition-colors">{post.data.title}</a></li>
+                            <li class="line-clamp-2 leading-snug"><a href={`/beaconacademy/info/${post.slug}/`} class="text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 font-medium transition-colors">{post.data.title}</a></li>
                         ))}
                     </ul>
-                    <a href="/beaconacademy/info" class="text-sm text-indigo-600 hover:text-indigo-800 font-bold mt-6 inline-flex items-center gap-1 hover:gap-2 transition-all">View All <span>&rarr;</span></a>
+                    <a href="/beaconacademy/info" class="text-sm text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 font-bold mt-6 inline-flex items-center gap-1 hover:gap-2 transition-all">View All <span>&rarr;</span></a>
                 </section>
 
                 <!-- Personal Blog -->
-                <section class="bg-white flex flex-col p-6 rounded-2xl shadow-sm border border-slate-100/50 hover:shadow-md hover:border-indigo-100 transition-all duration-300">
-                    <h2 class="text-xl font-bold flex items-center gap-3 mb-4 border-b border-slate-100 pb-4">
+                <section class="reveal card-hover">
+                    <h2 class="text-xl font-bold flex items-center gap-3 mb-4 border-b border-slate-100 dark:border-slate-700/50 pb-4 text-slate-900 dark:text-white">
                         <span class="bg-indigo-50 text-indigo-600 p-2 rounded-lg text-lg">✍️</span> 
                         Personal Blog
                     </h2>
                     <ul class="space-y-3 flex-1">
                         {blog.map((post: any) => (
-                            <li class="line-clamp-2 leading-snug"><a href={`/beaconacademy/blog/${post.slug}/`} class="text-slate-700 hover:text-indigo-600 font-medium transition-colors">{post.data.title}</a></li>
+                            <li class="line-clamp-2 leading-snug"><a href={`/beaconacademy/blog/${post.slug}/`} class="text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 font-medium transition-colors">{post.data.title}</a></li>
                         ))}
                     </ul>
-                    <a href="/beaconacademy/blog" class="text-sm text-indigo-600 hover:text-indigo-800 font-bold mt-6 inline-flex items-center gap-1 hover:gap-2 transition-all">View All <span>&rarr;</span></a>
+                    <a href="/beaconacademy/blog" class="text-sm text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 font-bold mt-6 inline-flex items-center gap-1 hover:gap-2 transition-all">View All <span>&rarr;</span></a>
                 </section>
 
                 <!-- eBooks -->
-                <section class="bg-white flex flex-col p-6 rounded-2xl shadow-sm border border-slate-100/50 hover:shadow-md hover:border-indigo-100 transition-all duration-300">
-                    <h2 class="text-xl font-bold flex items-center gap-3 mb-4 border-b border-slate-100 pb-4">
+                <section class="reveal card-hover">
+                    <h2 class="text-xl font-bold flex items-center gap-3 mb-4 border-b border-slate-100 dark:border-slate-700/50 pb-4 text-slate-900 dark:text-white">
                         <span class="bg-indigo-50 text-indigo-600 p-2 rounded-lg text-lg">📚</span> 
                         Free eBooks
                     </h2>
                     <ul class="space-y-3 flex-1">
                         {ebooks.map((post: any) => (
-                            <li class="line-clamp-2 leading-snug"><a href={`/beaconacademy/ebooks/${post.slug}/`} class="text-slate-700 hover:text-indigo-600 font-medium transition-colors">{post.data.title}</a></li>
+                            <li class="line-clamp-2 leading-snug"><a href={`/beaconacademy/ebooks/${post.slug}/`} class="text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 font-medium transition-colors">{post.data.title}</a></li>
                         ))}
                     </ul>
-                    <a href="/beaconacademy/ebooks" class="text-sm text-indigo-600 hover:text-indigo-800 font-bold mt-6 inline-flex items-center gap-1 hover:gap-2 transition-all">View All <span>&rarr;</span></a>
+                    <a href="/beaconacademy/ebooks" class="text-sm text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 font-bold mt-6 inline-flex items-center gap-1 hover:gap-2 transition-all">View All <span>&rarr;</span></a>
                 </section>
 
                 <!-- Templates -->
-                <section class="bg-white flex flex-col p-6 rounded-2xl shadow-sm border border-slate-100/50 hover:shadow-md hover:border-indigo-100 transition-all duration-300">
-                    <h2 class="text-xl font-bold flex items-center gap-3 mb-4 border-b border-slate-100 pb-4">
+                <section class="reveal card-hover">
+                    <h2 class="text-xl font-bold flex items-center gap-3 mb-4 border-b border-slate-100 dark:border-slate-700/50 pb-4 text-slate-900 dark:text-white">
                         <span class="bg-indigo-50 text-indigo-600 p-2 rounded-lg text-lg">💻</span> 
                         Templates
                     </h2>
                     <ul class="space-y-3 flex-1">
                         {templates.map((post: any) => (
-                            <li class="line-clamp-2 leading-snug"><a href={`/beaconacademy/templates/${post.slug}/`} class="text-slate-700 hover:text-indigo-600 font-medium transition-colors">{post.data.title}</a></li>
+                            <li class="line-clamp-2 leading-snug"><a href={`/beaconacademy/templates/${post.slug}/`} class="text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 font-medium transition-colors">{post.data.title}</a></li>
                         ))}
                     </ul>
-                    <a href="/beaconacademy/templates" class="text-sm text-indigo-600 hover:text-indigo-800 font-bold mt-6 inline-flex items-center gap-1 hover:gap-2 transition-all">View All <span>&rarr;</span></a>
+                    <a href="/beaconacademy/templates" class="text-sm text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 font-bold mt-6 inline-flex items-center gap-1 hover:gap-2 transition-all">View All <span>&rarr;</span></a>
                 </section>
 
                 <!-- Projects -->
-                <section class="bg-white flex flex-col p-6 rounded-2xl shadow-sm border border-slate-100/50 hover:shadow-md hover:border-indigo-100 transition-all duration-300">
-                    <h2 class="text-xl font-bold flex items-center gap-3 mb-4 border-b border-slate-100 pb-4">
+                <section class="reveal card-hover">
+                    <h2 class="text-xl font-bold flex items-center gap-3 mb-4 border-b border-slate-100 dark:border-slate-700/50 pb-4 text-slate-900 dark:text-white">
                         <span class="bg-indigo-50 text-indigo-600 p-2 rounded-lg text-lg">🚀</span> 
                         Projects
                     </h2>
                     <ul class="space-y-3 flex-1">
                         {projects.map((post: any) => (
-                            <li class="line-clamp-2 leading-snug"><a href={`/beaconacademy/projects/${post.slug}/`} class="text-slate-700 hover:text-indigo-600 font-medium transition-colors">{post.data.title}</a></li>
+                            <li class="line-clamp-2 leading-snug"><a href={`/beaconacademy/projects/${post.slug}/`} class="text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 font-medium transition-colors">{post.data.title}</a></li>
                         ))}
                     </ul>
-                    <a href="/beaconacademy/projects" class="text-sm text-indigo-600 hover:text-indigo-800 font-bold mt-6 inline-flex items-center gap-1 hover:gap-2 transition-all">View All <span>&rarr;</span></a>
+                    <a href="/beaconacademy/projects" class="text-sm text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 font-bold mt-6 inline-flex items-center gap-1 hover:gap-2 transition-all">View All <span>&rarr;</span></a>
                 </section>
 
 			</div>
