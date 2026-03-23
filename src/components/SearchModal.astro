@@ -1,0 +1,118 @@
+---
+import Search from "astro-pagefind/components/Search";
+---
+
+<button
+  id="search-btn"
+  class="relative inline-flex h-9 w-9 items-center justify-center rounded-full bg-slate-100 text-slate-600 transition-all hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-400 dark:hover:bg-slate-700 sm:w-auto sm:px-3 sm:gap-2"
+  aria-label="Search"
+>
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="11" cy="11" r="8"></circle>
+    <path d="m21 21-4.3-4.3"></path>
+  </svg>
+  <span class="hidden sm:inline text-sm font-medium">Search</span>
+  <span class="hidden sm:inline border border-slate-300 dark:border-slate-600 rounded bg-white dark:bg-slate-900 px-1 text-xs text-slate-400">⌘K</span>
+</button>
+
+<dialog
+  id="search-modal"
+  class="backdrop:bg-slate-900/50 backdrop:backdrop-blur-sm fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-800 p-0 m-0 overflow-hidden transform scale-95 opacity-0 open:scale-100 open:opacity-100 transition-all duration-200"
+>
+  <div class="p-6 h-[80vh] sm:h-[600px] overflow-y-auto pagefind-container custom-scrollbar">
+      <div class="flex justify-between items-center mb-6">
+          <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50">Search Resources</h2>
+          <button id="close-search" class="text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 rounded-full p-2 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 6 6 18"></path>
+                  <path d="m6 6 12 12"></path>
+              </svg>
+          </button>
+      </div>
+      <Search id="pagefind-search" className="pagefind-ui" uiOptions={{ showImages: false }} />
+  </div>
+</dialog>
+
+<script is:inline>
+  function setupSearch() {
+    const dialog = document.getElementById('search-modal');
+    const trigger = document.getElementById('search-btn');
+    const close = document.getElementById('close-search');
+
+    if(!dialog || !trigger) return;
+
+    trigger.addEventListener('click', () => {
+      dialog.showModal();
+      // focus input manually after load
+      setTimeout(() => {
+          const input = dialog.querySelector('.pagefind-ui__search-input');
+          if(input) input.focus();
+      }, 50);
+    });
+
+    close?.addEventListener('click', () => {
+      dialog.close();
+    });
+
+    dialog.addEventListener('click', (e) => {
+      const dialogDimensions = dialog.getBoundingClientRect();
+      if (
+        e.clientX < dialogDimensions.left ||
+        e.clientX > dialogDimensions.right ||
+        e.clientY < dialogDimensions.top ||
+        e.clientY > dialogDimensions.bottom
+      ) {
+        dialog.close();
+      }
+    });
+
+    // Keyboard shortcut (Cmd+K or Ctrl+K)
+    document.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        dialog.showModal();
+      }
+    });
+  }
+
+  // Setup on initial load
+  setupSearch();
+  // Listen for view transitions (re-attach event listeners)
+  document.addEventListener("astro:page-load", setupSearch);
+</script>
+
+<style is:global>
+  /* Custom styles for Pagefind to match our theme */
+  .pagefind-ui {
+    --pagefind-ui-scale: 0.9;
+    --pagefind-ui-primary: #4f46e5;
+    --pagefind-ui-text: #334155;
+    --pagefind-ui-background: #ffffff;
+    --pagefind-ui-border: #e2e8f0;
+    --pagefind-ui-tag: #f1f5f9;
+    --pagefind-ui-border-width: 1px;
+    --pagefind-ui-border-radius: 12px;
+    --pagefind-ui-font: "Inter", system-ui, sans-serif;
+  }
+
+  .dark .pagefind-ui {
+    --pagefind-ui-primary: #818cf8;
+    --pagefind-ui-text: #e2e8f0;
+    --pagefind-ui-background: #0f172a;
+    --pagefind-ui-border: #1e293b;
+    --pagefind-ui-tag: #1e293b;
+  }
+  
+  .pagefind-ui__search-input {
+      outline: none !important;
+  }
+  
+  .pagefind-ui__result-link {
+      color: var(--pagefind-ui-primary) !important;
+      text-decoration: none !important;
+  }
+
+  .pagefind-ui__result-link:hover {
+      text-decoration: underline !important;
+  }
+</style>

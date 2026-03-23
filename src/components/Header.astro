@@ -2,6 +2,7 @@
 import HeaderLink from "./HeaderLink.astro";
 import { Image } from "astro:assets";
 import ThemeToggle from "./ThemeToggle.astro";
+import SearchModal from "./SearchModal.astro";
 ---
 
 <header
@@ -48,8 +49,11 @@ import ThemeToggle from "./ThemeToggle.astro";
           >Projects</HeaderLink
         >
       </div>
-      <div class="ml-2 border-l border-slate-200 dark:border-slate-700 pl-4 shrink-0 hidden sm:block">
-        <ThemeToggle />
+      <div class="ml-2 sm:ml-4 border-l border-slate-200 dark:border-slate-700 pl-4 flex items-center gap-3 shrink-0">
+        <SearchModal />
+        <div class="hidden sm:block">
+          <ThemeToggle />
+        </div>
       </div>
     </div>
   </nav>
